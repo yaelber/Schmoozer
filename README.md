@@ -111,14 +111,18 @@ in new_post.ejs
 
 ```html
 <h1>New Post</h1>
-<%= includes _post_form.ejs %>
+<form action="/posts/new" method="post">
+  <%- include _post_form.ejs %>
+</form>
 ```
 
 in edit_post.ejs
 
 ```html
 <h1>Edit Post</h1>
-<%= includes _post_form.ejs %>
+<form action="/posts/edit" method="post">
+  <%- include _post_form.ejs %>
+</form>
 ```
 
 `_` underscore to indicate it's a partial
