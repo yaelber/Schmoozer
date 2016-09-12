@@ -93,7 +93,7 @@ edit_post.ejs
 
 ```html
 <h1>Edit Post</h1>
-<form action="/posts/new" method="post">
+<form action="/posts/edit" method="post">
   <label>Title</label>
   <input type="text" name="title">
   <label>Description</label>
