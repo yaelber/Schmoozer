@@ -1,4 +1,5 @@
 var db = require('../db');
+var Profile = require('./Profile');
 var Sequelize = require('sequelize');
 
 var User = db.define('users', {
@@ -9,5 +10,8 @@ var User = db.define('users', {
     type: Sequelize.STRING
   }
 });
+
+// hasOne adds a uniqueness constraint on
+// the foreign key column of its target
 
 module.exports = User;
