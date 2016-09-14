@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 // GET /posts
 // show all posts
 router.get('/', function(request, response, next) {
-  Post.findAll() // default order: modifiedAt
+  Post.findAll({
+    include: [User]
+  }) // default order: modifiedAt
     .then(function(posts) {
+      console.log(posts);
       response.render('index', { posts: posts });
     });
 });

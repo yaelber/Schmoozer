@@ -7,18 +7,6 @@ var Post = db.define('posts', {
   },
   body: {
     type: Sequelize.STRING
-  },
-  createdAt: {
-    type: Sequelize.DATEONLY,
-    defaultValue: function() {
-      return new Date();
-    }
-  },
-  modifiedAt: {
-    type: Sequelize.DATEONLY,
-    defaultValue: function() {
-      return new Date();
-    }
   }
 });
 

@@ -39,6 +39,7 @@
             <thead>
               <tr>
                 <td>ID</td>
+                <td>Author</td>
                 <td>Title</td>
                 <td>Body</td>
                 <td>Date</td>
@@ -48,6 +49,7 @@
             <% posts.forEach(function(post) { %>
               <tr>
                 <td><%= post.id %></td>
+                <td><%= post.user.firstName %> <%= post.user.lastName %></td>
                 <td>
                   <a href="/posts/<%= post.id %>"><%= post.title %></a>
                 </td>
