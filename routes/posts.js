@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post');
-const User = require('../models/User');
+
+// Holds all of our models as keys inside model object
+// models.users, models.posts, etc.
+const models  = require('../models');
 
 // GET /posts
 // show all posts
 router.get('/', function(request, response, next) {
-  Post.findAll({
-    include: [User]
+  models.posts.findAll({
+    include: [models.users]
   }) // default order: modifiedAt
     .then(function(posts) {
       console.log(posts);
@@ -22,16 +24,25 @@ router.get('/new', function(request, response, next) {
 });
 
 router.post('/new', function(request, response, next) {
-  Post.create(request.body)
-    .then(function saved(post) {
+  // We don't have authentication yet and every post
+  // requires a userId.
+  // Let's find the first user and use the ID of that user
+  // for the association.
+  models.users.findOne().then(function(user) {
+    models.posts.create({
+      userId: user.id,
+      title: request.body.title,
+      body: request.body.body
+    }).then(function saved(post) {
       response.redirect('../posts/' + post.id); // GET /posts/:id
     });
+  });
 });
 
 // GET /posts/:id
 // show post
 router.get('/:id', function(request, response, next) {
-  Post.findById(request.params.id)
+  models.posts.findById(request.params.id)
   .then(function(post) {
     response.render('post', { post: post });
   })
@@ -43,7 +54,7 @@ router.get('/:id', function(request, response, next) {
 // POST /posts/:id
 // edit post
 router.post('/:id/edit', function(request, response) {
-  Post.findById(request.params.id)
+  models.posts.findById(request.params.id)
   .then(function(post){
     post.title = request.body.title;
     post.body = request.body.body;
