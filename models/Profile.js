@@ -1,15 +1,18 @@
-var db = require('../db');
-var Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+    var Profile = sequelize.define('profiles', {
+        bio: DataTypes.TEXT
+    }, {
+        classMethod: {
+            associate: function(models) {
+                Profile.belongsTo(models.users, {
+                    onDelete: 'CASCADE',
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
+            }
+        }
+    });
 
-var Profile = db.define('profiles', {
-  bio: {
-    type: Sequelize.STRING
-  }
-});
-
-// belongsTo adds a foreign key column
-// on its source
-// Profile.belongsTo(User);
-// the CHILD ITSELF has a reference to the PARENT
-
-module.exports = Profile;
+    return Profile;
+};

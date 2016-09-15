@@ -4,8 +4,6 @@
  * Module dependencies.
  */
 
-require('../seed');
-
 var app = require('../app');
 var debug = require('debug')('blogger:server');
 var http = require('http');
