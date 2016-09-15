@@ -1,16 +1,15 @@
-var db = require('../db');
-var Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+    var User = sequelize.define('users', {
+        firstName: DataTypes.STRING,
+        lastName: DataTypes.STRING
+    }, {
+        classMethod: {
+            associate: function(models) {
+                User.hasOne(models.profiles);
+                User.hasMany(models.posts);
+            }
+        }
+    });
 
-var User = db.define('users', {
-  firstName: {
-    type: Sequelize.STRING
-  },
-  lastName: {
-    type: Sequelize.STRING
-  }
-});
-
-// hasOne adds a uniqueness constraint on
-// the foreign key column of its target
-
-module.exports = User;
+    return User;
+};

@@ -1,13 +1,19 @@
-var db = require('../db');
-var Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+    var Post = sequelize.define('posts', {
+        title: DataTypes.STRING,
+        body: DataTypes.TEXT
+    }, {
+        classMethods: {
+            associate: function(models) {
+                Post.belongsTo(models.users, {
+                    onDelete: 'CASCADE',
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
+            }
+        }
+    });
 
-var Post = db.define('posts', {
-  title: {
-    type: Sequelize.STRING,
-  },
-  body: {
-    type: Sequelize.STRING
-  }
-});
-
-module.exports = Post;
+    return Post;
+};
