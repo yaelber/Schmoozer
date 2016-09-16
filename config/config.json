@@ -2,6 +2,6 @@
   "development": {
     "dialect": "postgres",
     "username": "amy",
-    "password": "amy"
+    "password": ""
   }
 }
