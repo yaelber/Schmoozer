@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
           });
 
           Comment.belongsTo(models.users, {
-            onDelete: 'NULL',
+            onDelete: 'SET NULL',
             foreignKey: {
               allowNull: true
               // a comment doesn't always belong to
