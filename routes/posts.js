@@ -42,7 +42,9 @@ router.post('/new', function(request, response, next) {
 // GET /posts/:id
 // show post
 router.get('/:id', function(request, response, next) {
-  models.posts.findById(request.params.id)
+  models.posts.findById(request.params.id, {
+    include: [models.comments]
+  })
   .then(function(post) {
     response.render('post', { post: post });
   })

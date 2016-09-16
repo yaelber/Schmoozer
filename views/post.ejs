@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <title>Post</title>
 </head>
 <body>
-  <h1><%= post.title %></h1>
-  <div>
-    <%= post.body %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1><%= post.title %></h1>
+        <a class="btn btn-s btn-default" href="/posts/<%= post.id %>/edit">Edit Post</a>
+        <div>
+          <%= post.body %>
+        </div>
+        <section>
+          <h3>Comments (<%= post.comments.length %>)</h3>
+          <% post.comments.forEach(function(comment) { %>
+            <hr>
+            <article class="comment">
+              <div>By <%= comment.userId %></div>
+              <div>
+                <%= comment.content %>
+              </div>
+            </article>
+          <% }) %>
+        </section>
+      </div>
+    </div>
   </div>
-  <a href="/posts/<%= post.id %>/edit">Edit Post</a>
 </body>
 </html>

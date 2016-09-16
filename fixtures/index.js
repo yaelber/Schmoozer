@@ -1,5 +1,6 @@
 module.exports = {
   users: require('./users'),
   posts: require('./posts'),
-  profiles: require('./profiles')
+  profiles: require('./profiles'),
+  comments: require('./comments')
 };

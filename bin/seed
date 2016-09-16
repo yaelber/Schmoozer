@@ -21,7 +21,9 @@ models.users.sync({ force: true }).then(function() {
     });
 
     models.comments.sync({ force: true }).then(function() {
-      // code
+      fixtures.comments.forEach(function(fixture) {
+        models.comments.create(fixture);
+      });
     });
   });
 });
