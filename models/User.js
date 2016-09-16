@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 User.hasOne(models.profiles);
                 User.hasMany(models.posts);
+                User.hasMany(models.comments);
             }
         }
     });

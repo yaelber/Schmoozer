@@ -10,6 +10,15 @@ module.exports = function(sequelize, DataTypes) {
               allowNull: false
             }
           });
+
+          Comment.belongsTo(models.users, {
+            onDelete: 'NULL',
+            foreignKey: {
+              allowNull: true
+              // a comment doesn't always belong to
+              // a user (can be anonymous)
+            }
+          });
         }
       }
     });
