@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <title>Post</title>
 </head>
@@ -14,19 +15,22 @@
           <%= post.body %>
         </div>
         <section>
-          <h3>Comments (<%= post.comments.length %>)</h3>
+          <h3>Comments</h3>
           <% post.comments.forEach(function(comment) { %>
-            <hr>
-            <article class="comment">
+            <article class="comment" data-comment-id="<%= comment.id%>">
+              <hr>
               <div>By <%= comment.userId %></div>
               <div>
                 <%= comment.content %>
               </div>
+              <!-- note: form only supports GET and POST methods -->
+              <button class="delete-comment" data-comment-id="<%= comment.id%>">Delete</button>
             </article>
           <% }) %>
         </section>
       </div>
     </div>
   </div>
+  <script src="../javascripts/post.js"></script>
 </body>
 </html>
