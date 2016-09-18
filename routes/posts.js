@@ -43,7 +43,7 @@ router.post('/new', function(request, response, next) {
 router.get('/:id', function(request, response, next) {
   // TODO: DRY this code. It is repeated in comments.js
   models.posts.findById(request.params.id, {
-    include: [models.comments],
+    include: [models.comments, models.tags],
     order: [
       [{model: models.comments}, 'createdAt', 'DESC']
     ]

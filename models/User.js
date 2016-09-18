@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING
     }, {
-        classMethod: {
+        classMethods: {
             associate: function(models) {
                 User.hasOne(models.profiles);
                 User.hasMany(models.posts);

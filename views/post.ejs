@@ -9,6 +9,11 @@
     <div class="row">
       <div class="col-md-12">
         <h1><%= post.title %></h1>
+        <ul class="tags">
+          <% post.tags.forEach(function(tag) { %>
+            <li><%= tag.title %></li>
+          <% }) %>
+        </ul>
         <a class="btn btn-s btn-default" href="/posts/<%= post.id %>/edit">Edit Post</a>
         <div>
           <%= post.body %>

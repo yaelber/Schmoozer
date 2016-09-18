@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Profile = sequelize.define('profiles', {
         bio: DataTypes.TEXT
     }, {
-        classMethod: {
+        classMethods: {
             associate: function(models) {
                 Profile.belongsTo(models.users, {
                     onDelete: 'CASCADE',

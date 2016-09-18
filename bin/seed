@@ -17,28 +17,31 @@ models.users.sync({ force: true }).then(function() {
     });
   });
 
-  models.posts.sync({ force: true }).then(function() {
-    fixtures.posts.forEach(function(fixture) {
-      models.posts.create(fixture);
-    });
-
-    models.comments.sync({ force: true }).then(function() {
-      console.log('begin seeding comments...');
-      fixtures.comments.forEach(function(fixture) {
-        models.comments.create(fixture);
-      });
-    });
-  });
-
-  models.tags.sync({ force: true }).then(function() {
-    fixtures.tags.forEach(function(fixture) {
-      models.tags.create(fixture);
-    });
-  });
+  // create post_tags FIRST before creating its "children"
+  // (tags and posts)
 
   models.post_tags.sync({ force: true }).then(function() {
     fixtures.post_tags.forEach(function(fixture) {
       models.post_tags.create(fixture);
-    })
+    });
+
+    models.tags.sync({ force: true }).then(function() {
+      fixtures.tags.forEach(function(fixture) {
+        models.tags.create(fixture);
+      });
+    });
+
+    models.posts.sync({ force: true }).then(function() {
+      fixtures.posts.forEach(function(fixture) {
+        models.posts.create(fixture);
+      });
+
+      models.comments.sync({ force: true }).then(function() {
+        console.log('begin seeding comments...');
+        fixtures.comments.forEach(function(fixture) {
+          models.comments.create(fixture);
+        });
+      });
+    });
   });
 });
