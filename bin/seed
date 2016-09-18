@@ -3,6 +3,8 @@
 const models = require('../models'); // models/index.js
 const fixtures = require('../fixtures'); // fixtures/index.js
 
+// force: true = drops the existing table
+// sync: creates the table if it doesn't exist
 models.users.sync({ force: true }).then(function() {
 
   fixtures.users.forEach(function(fixture) {
@@ -21,6 +23,7 @@ models.users.sync({ force: true }).then(function() {
     });
 
     models.comments.sync({ force: true }).then(function() {
+      console.log('begin seeding comments...');
       fixtures.comments.forEach(function(fixture) {
         models.comments.create(fixture);
       });

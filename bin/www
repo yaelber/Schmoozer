@@ -6,9 +6,12 @@ var models = require("../models");
 
 app.set('port', process.env.PORT || 3000);
 
+console.log('sync...')
 models.sequelize.sync().then(function () {
+    console.log('start server...')
     var server = app.listen(app.get('port'), function() {
-        debug('Express server listening on port ' + server.address().port);
+      console.log('Server listening on localhost:' + server.address().port);
+      debug('Express server listening on port ' + server.address().port);
     });
 });
 

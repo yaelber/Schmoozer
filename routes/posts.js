@@ -12,7 +12,6 @@ router.get('/', function(request, response, next) {
     include: [models.users]
   }) // default order: modifiedAt
     .then(function(posts) {
-      console.log(posts);
       response.render('index', { posts: posts });
     });
 });
@@ -42,8 +41,12 @@ router.post('/new', function(request, response, next) {
 // GET /posts/:id
 // show post
 router.get('/:id', function(request, response, next) {
+  // TODO: DRY this code. It is repeated in comments.js
   models.posts.findById(request.params.id, {
-    include: [models.comments]
+    include: [models.comments],
+    order: [
+      [{model: models.comments}, 'createdAt', 'DESC']
+    ]
   })
   .then(function(post) {
     response.render('post', { post: post });
