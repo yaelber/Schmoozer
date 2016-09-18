@@ -8,33 +8,33 @@ router.delete('/:id', function(request, response, next) {
   // once models.comments.findById promise is fulfilled.
   var postId;
   models.comments.findById(request.params.id)
-    .then(function(comment){
+    .then(function commentFindSuccess(comment){
       postId = comment.postId;
       return comment.destroy(); // this is also a promise! Chain it.
+    }, function commentFindFailed(error) {
+      next(error);
     })
     // now this is handling the promise of the destroy
     .then(function destroySucceeded() {
       // assume DELETE comes from the show post page
       // TODO: DRY this code. It is repeated in posts.js
-      models.posts.findById(postId, {
+      return models.posts.findById(postId, {
         include: [models.comments],
         order: [
           [{model: models.comments}, 'createdAt', 'DESC']
         ]
-      })
-      .then(function(post) {
-        response.render('post', {
-          post: post,
-          message: 'Your comment was successfully deleted!'
-        });
-      })
-      .catch(function(error) {
-        next(error);
       });
+    }, function destroyFailed(error) {
+      next(error);
     })
-    .catch(function destroyFailed() {
-
-    });
+    .then(function postFindSucceeded(post) {
+      response.render('post', {
+        post: post,
+        message: 'Your comment was successfully deleted!'
+      });
+    }, function postFindFailed(error) {
+      next(error);
+    })
 });
 
 module.exports = router;
