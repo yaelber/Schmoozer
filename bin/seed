@@ -29,4 +29,16 @@ models.users.sync({ force: true }).then(function() {
       });
     });
   });
+
+  models.tags.sync({ force: true }).then(function() {
+    fixtures.tags.forEach(function(fixture) {
+      models.tags.create(fixture);
+    });
+  });
+
+  models.post_tags.sync({ force: true }).then(function() {
+    fixtures.post_tags.forEach(function(fixture) {
+      models.post_tags.create(fixture);
+    })
+  });
 });

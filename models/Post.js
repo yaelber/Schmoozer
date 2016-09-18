@@ -5,6 +5,14 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        /*
+        models = {
+          'posts': Post,
+          'comments': Comment,
+          'tags': Tag,
+          ...etc...
+        }
+        */
         Post.belongsTo(models.users, {
           onDelete: 'CASCADE',
           foreignKey: {
@@ -13,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         });
 
         Post.hasMany(models.comments);
+        Post.belongsToMany(models.tags, { through: 'post_tags' });
       }
     }
   });
