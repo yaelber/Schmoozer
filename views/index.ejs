@@ -40,6 +40,8 @@
               <tr>
                 <td>ID</td>
                 <td>Author</td>
+                <td>Tags1</td>
+                <td>Tags2</td>
                 <td>Title</td>
                 <td>Body</td>
                 <td>Date</td>
@@ -50,6 +52,13 @@
               <tr>
                 <td><%= post.id %></td>
                 <td><%= post.user.firstName %> <%= post.user.lastName %></td>
+                <!-- tags for this post -->
+                <td><%= post.tags.map(function(tag) { return tag.title; }).join(', ') %></td>
+                <td>
+                  <% post.tags.forEach(function(tag) { %>
+                    <a href="/tags/<%= tag.id %>"><%= tag.title %></a>
+                  <% }); %>
+                </td>
                 <td>
                   <a href="/posts/<%= post.id %>"><%= post.title %></a>
                 </td>

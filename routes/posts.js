@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const debug = require('debug')('blogger');
+
 // Holds all of our models as keys inside model object
 // models.users, models.posts, etc.
 const models  = require('../models');
@@ -9,9 +11,10 @@ const models  = require('../models');
 // show all posts
 router.get('/', function(request, response, next) {
   models.posts.findAll({
-    include: [models.users]
+    include: [models.users, models.tags]
   }) // default order: modifiedAt
     .then(function(posts) {
+      console.log('post', posts[0])
       response.render('index', { posts: posts });
     });
 });
