@@ -14,7 +14,6 @@ router.get('/', function(request, response, next) {
     include: [models.users, models.tags]
   }) // default order: modifiedAt
     .then(function(posts) {
-      console.log('post', posts[0])
       response.render('index', { posts: posts });
     });
 });
