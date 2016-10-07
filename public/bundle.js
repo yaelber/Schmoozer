@@ -54,13 +54,20 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _CommentBox = __webpack_require__(172);
+
+	var _CommentBox2 = _interopRequireDefault(_CommentBox);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(
-	  'h1',
-	  null,
-	  'Hello World!'
-	), document.getElementById('root'));
+	// TODO: explain multiple renders
+	// ReactDOM.render(
+	//   <h2>Hello World!</h2>,
+	//   document.getElementById('root')
+	// );
+
+	// TODO: where can we put a commentbox's postId?
+	_reactDom2.default.render(_react2.default.createElement(_CommentBox2.default, { 'post-id': 2 }), document.getElementById('comment'));
 
 /***/ },
 /* 1 */
@@ -21428,6 +21435,102 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CommentBox = function (_Component) {
+	  _inherits(CommentBox, _Component);
+
+	  function CommentBox(props) {
+	    _classCallCheck(this, CommentBox);
+
+	    // makes this a React component
+	    var _this = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this, props));
+
+	    _this.state = {
+	      text: '',
+	      addedPhoto: false
+	    };
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.toggleAddPhoto = _this.toggleAddPhoto.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(CommentBox, [{
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({
+	        text: event.target.value
+	      });
+	    }
+	  }, {
+	    key: 'toggleAddPhoto',
+	    value: function toggleAddPhoto() {
+	      this.setState({
+	        addedPhoto: !this.state.addedPhoto
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var addedPhotoLength = this.state.text.length + (this.state.addedPhoto ? 20 : 0);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'well clearfix' },
+	        _react2.default.createElement('textarea', {
+	          onChange: this.handleChange,
+	          className: 'form-control' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          300 - addedPhotoLength,
+	          ' remaining characters.'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          {
+	            className: 'btn btn-primary pull-right',
+	            onClick: this.toggleAddPhoto },
+	          this.state.addedPhoto ? "Added Photo" : "Add Photo"
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          {
+	            disabled: addedPhotoLength === 0 || addedPhotoLength > 300,
+	            className: 'btn btn-primary pull-right' },
+	          'Comment'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CommentBox;
+	}(_react.Component);
+
+	exports.default = CommentBox;
 
 /***/ }
 /******/ ]);
