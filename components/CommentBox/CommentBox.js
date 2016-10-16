@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class CommentBox extends Component {
   constructor(props) {
@@ -22,7 +22,8 @@ class CommentBox extends Component {
     });
   }
 
-  toggleAddPhoto() {
+  toggleAddPhoto(e) {
+    // click handler on the added photo button
     this.setState({
       addedPhoto: !this.state.addedPhoto
     });
@@ -42,20 +43,21 @@ class CommentBox extends Component {
   //   console.log('component DID update');
   // }
 
-  onSubmit() {
-    console.log('onSubmit');
-    $.post(`/posts/${POSTIDHERE}/comments/new`, {
+  onSubmit(e) {
+    e.preventDefault();
+    $.post(`/posts/${this.props.postId}/comments/new`, {
       text: this.state.text
-    }, () => {
-      // on success
-      console.log('Successfully added a comment!');
+    }, (response) => {
+      // on success, get back the json
+      console.log('Successfully added a comment!', response);
     });
   }
 
   render() {
     const addedPhotoLength = this.state.text.length + (this.state.addedPhoto ? 20 : 0);
     return (
-      <div className="well clearfix">
+      <form className="well clearfix"
+        onSubmit={this.onSubmit}>
         <textarea
           onChange={this.handleChange}
           className="form-control"></textarea><br/>
@@ -63,17 +65,23 @@ class CommentBox extends Component {
           {300 - addedPhotoLength} remaining characters.
         </span>
         <button
+          type="button"
           className="btn btn-primary pull-right"
           onClick={this.toggleAddPhoto}>
           {this.state.addedPhoto ? "Added Photo" : "Add Photo"}
         </button>
-        <button
+        <input
+          type="submit"
+          value="Comment"
           disabled={addedPhotoLength === 0 || addedPhotoLength > 300}
-          onSubmit={this.onSubmit}
-          className="btn btn-primary pull-right">Comment</button>
-      </div>
+          className="btn btn-primary pull-right" />
+      </form>
     );
   }
 }
+
+CommentBox.propTypes = {
+  postId: PropTypes.string.isRequired
+};
 
 export default CommentBox;

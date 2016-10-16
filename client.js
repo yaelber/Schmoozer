@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentBox from './components/CommentBox/CommentBox';
+
+import App from './components/App/App';
 
 // TODO: explain multiple renders
 // ReactDOM.render(
@@ -10,6 +11,6 @@ import CommentBox from './components/CommentBox/CommentBox';
 
 // TODO: where can we put a commentbox's postId?
 ReactDOM.render(
-  <CommentBox post-id={2} />,
-  document.getElementById('comment')
+  <App />,
+  document.getElementById('react-comments')
 );

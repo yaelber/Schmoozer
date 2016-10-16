@@ -18,10 +18,10 @@
         <div>
           <%= post.body %>
         </div>
+        <section id="react-comments"></section>
         <section>
           <h3>Comments</h3>
           <div id="comment">
-            <!-- Rendered CommentBox component goes -->
           </div>
           <% post.comments.forEach(function(comment) { %>
             <article class="comment" data-comment-id="<%= comment.id%>">
