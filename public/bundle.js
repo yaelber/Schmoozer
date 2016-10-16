@@ -21473,16 +21473,23 @@
 	      text: '',
 	      addedPhoto: false
 	    };
+	    // custom method? bind them!
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.toggleAddPhoto = _this.toggleAddPhoto.bind(_this);
+	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(CommentBox, [{
 	    key: 'handleChange',
 	    value: function handleChange(event) {
+	      var _this2 = this;
+
 	      this.setState({
 	        text: event.target.value
+	      }, function () {
+	        // success callback as the second argument in setState
+	        console.log('handleChange: sets text to ', _this2.state.text);
 	      });
 	    }
 	  }, {
@@ -21490,6 +21497,32 @@
 	    value: function toggleAddPhoto() {
 	      this.setState({
 	        addedPhoto: !this.state.addedPhoto
+	      });
+	    }
+
+	    // componentWillMount() {
+	    //   // happens before the FIRST render 
+	    //   // can access the client
+	    //   console.log('component will mount', window, 'only called once!');
+	    // }
+
+	    // componentWillUpdate() {
+	    //   console.log('component will update gets called on every state/prop change')
+	    // }
+
+	    // componentDidUpdate() {
+	    //   console.log('component DID update');
+	    // }
+
+	  }, {
+	    key: 'onSubmit',
+	    value: function onSubmit() {
+	      console.log('onSubmit');
+	      $.post('/posts/' + POSTIDHERE + '/comments/new', {
+	        text: this.state.text
+	      }, function () {
+	        // on success
+	        console.log('Successfully added a comment!');
 	      });
 	    }
 	  }, {
@@ -21520,6 +21553,7 @@
 	          'button',
 	          {
 	            disabled: addedPhotoLength === 0 || addedPhotoLength > 300,
+	            onSubmit: this.onSubmit,
 	            className: 'btn btn-primary pull-right' },
 	          'Comment'
 	        )
