@@ -12,5 +12,5 @@ import App from './components/App/App';
 // TODO: where can we put a commentbox's postId?
 ReactDOM.render(
   <App />,
-  document.getElementById('react-comments')
+  document.getElementById('root')
 );

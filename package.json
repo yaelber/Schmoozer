@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "webpack-watch": "webpack -w",
+    "webpack-watch": "webpack -w --progress --colors",
     "express-server": "nodemon ./bin/www",
     "start": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\""
   },
@@ -26,11 +26,27 @@
     "pg": "^6.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router": "^3.0.0",
     "sequelize": "^3.24.2",
     "serve-favicon": "~2.3.0",
     "webpack": "^1.13.2"
   },
   "devDependencies": {
-    "concurrently": "^3.1.0"
-  }
+    "concurrently": "^3.1.0",
+    "eslint": "^3.9.1",
+    "eslint-plugin-react": "^6.6.0"
+  },
+  "description": "## Adding blog post comments & tags",
+  "main": "client.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amyhua/blogger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amyhua/blogger/issues"
+  },
+  "homepage": "https://github.com/amyhua/blogger#readme"
 }
