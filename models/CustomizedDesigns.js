@@ -1,3 +1,3 @@
-module.exports = function(sequelize) {
-  return sequelize.define('post_tags');
-};
+// module.exports = function(sequelize) {
+//   return sequelize.define('post_tags');
+// };

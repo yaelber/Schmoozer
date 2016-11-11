@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "webpack-watch": "webpack -w --progress --colors",
-    "express-server": "nodemon ./bin/www",
+    "express-server": "nodemon ./bin/www.js",
     "start": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\""
   },
   "dependencies": {

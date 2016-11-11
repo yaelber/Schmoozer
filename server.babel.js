@@ -6,9 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // routers
-var routes = require('./routes/index');
-var posts = require('./routes/posts');
-var comments = require('./routes/comments');
+// var routes = require('./routes/index');
+// var posts = require('./routes/posts');
+// var comments = require('./routes/comments');
 
 var app = express();
 
@@ -26,9 +26,9 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routers
-app.use('/api', routes);
-app.use('/api/posts', posts);
-app.use('/api/comments', comments);
+// app.use('/api', routes);
+// app.use('/api/posts', posts);
+// app.use('/api/comments', comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

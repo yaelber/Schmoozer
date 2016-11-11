@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 // import Post from '../Post/Post';
 
 
-export default class App extends Component {
+const Header = (props) => {
   return (
-    <div className="homePage">
-      <div className="header"></div>
+      <div className="header">
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
@@ -15,19 +14,15 @@ export default class App extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#"><img alt="Brand" src=""></a>
-            </div>
-      <div className="eventCategories">
-        <div className="holiday">Holiday Invitations</div>
-        <div className="kids">Baby and Kids</div>
-        <div className="birthday">Birthday Celebrations</div>
-        <div className="getTogether">Get-togethers</div>
+              <a className="navbar-brand" href="#"><img alt="Brand" src=""></img></a>
+
       </div>
-      <div className="footer">
-        <a href="">About</a>
-        <a href="">Help</a>
-        <a href="">Terms&Conditions</a>
       </div>
-    </div>
-  )
+      </nav>
+      </div>
+
+
+)
 };
+
+export default Header;

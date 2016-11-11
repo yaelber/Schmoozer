@@ -54,19 +54,12 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _App = __webpack_require__(229);
+	var _App = __webpack_require__(172);
 
 	var _App2 = _interopRequireDefault(_App);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// TODO: explain multiple renders
-	// ReactDOM.render(
-	//   <h2>Hello World!</h2>,
-	//   document.getElementById('root')
-	// );
-
-	// TODO: where can we put a commentbox's postId?
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ },
@@ -21437,7 +21430,77 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 172 */,
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	var _Template = __webpack_require__(228);
+
+	var _Template2 = _interopRequireDefault(_Template);
+
+	var _EventCategories = __webpack_require__(232);
+
+	var _EventCategories2 = _interopRequireDefault(_EventCategories);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import SingleCategoryDesigns from '../SingleCategoryDesigns/SingleCategoryDesigns';
+	// import SingleDesign from '../SingleDesign/SingleDesign';
+
+
+	var App = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App() {
+	    _classCallCheck(this, App);
+
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	  }
+
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactRouter.Router,
+	        { history: _reactRouter.browserHistory },
+	        _react2.default.createElement(
+	          _reactRouter.Route,
+	          { path: '/', component: _Template2.default },
+	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _EventCategories2.default })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component);
+
+	// <Route path="/:category" component={SingleCategoryDesigns} />
+	// <Route path="/:category/:dessignId" component={SingleDesign} />
+
+
+	exports.default = App;
+
+/***/ },
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26343,8 +26406,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 228 */,
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26353,7 +26415,41 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Footer = __webpack_require__(229);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	var _Header = __webpack_require__(230);
+
+	var _Header2 = _interopRequireDefault(_Header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Template = function Template(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(_Header2.default, null),
+	    props.children,
+	    _react2.default.createElement(_Footer2.default, null)
+	  );
+	};
+
+	exports.default = Template;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
 
 	var _react = __webpack_require__(1);
 
@@ -26361,49 +26457,140 @@
 
 	var _reactRouter = __webpack_require__(173);
 
-	var _Posts = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../Posts/Posts\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	var _Posts2 = _interopRequireDefault(_Posts);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	// import Post from '../Post/Post';
 
 
-	var App = function (_Component) {
-	  _inherits(App, _Component);
+	var Footer = function Footer(props) {
+	        return _react2.default.createElement(
+	                'div',
+	                { className: 'footer' },
+	                _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '' },
+	                        'About'
+	                ),
+	                _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '' },
+	                        'Help'
+	                ),
+	                _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '' },
+	                        'Terms&Conditions'
+	                )
+	        );
+	};
 
-	  function App() {
-	    _classCallCheck(this, App);
+	exports.default = Footer;
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	  }
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
 
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        _reactRouter.Router,
-	        { history: _reactRouter.browserHistory },
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import Post from '../Post/Post';
+
+
+	var Header = function Header(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "header" },
+	    _react2.default.createElement(
+	      "nav",
+	      { className: "navbar navbar-default" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "container-fluid" },
 	        _react2.default.createElement(
-	          _reactRouter.Route,
-	          { path: '/' },
-	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _Posts2.default })
+	          "div",
+	          { className: "navbar-header" },
+	          _react2.default.createElement(
+	            "button",
+	            { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1", "aria-expanded": "false" },
+	            _react2.default.createElement(
+	              "span",
+	              { className: "sr-only" },
+	              "Toggle navigation"
+	            ),
+	            _react2.default.createElement("span", { className: "icon-bar" }),
+	            _react2.default.createElement("span", { className: "icon-bar" }),
+	            _react2.default.createElement("span", { className: "icon-bar" })
+	          ),
+	          _react2.default.createElement(
+	            "a",
+	            { className: "navbar-brand", href: "#" },
+	            _react2.default.createElement("img", { alt: "Brand", src: "" })
+	          )
 	        )
-	      );
-	    }
-	  }]);
+	      )
+	    )
+	  );
+	};
 
-	  return App;
-	}(_react.Component);
+	exports.default = Header;
 
-	exports.default = App;
+/***/ },
+/* 231 */,
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import Post from '../Post/Post';
+
+
+	var EventCategories = function EventCategories(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "eventCategories" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "holiday" },
+	      "Holiday"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "kids" },
+	      "Baby and Kids"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "birthday" },
+	      "Birthday Celebration"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "getTogether" },
+	      "Get-togethers"
+	    )
+	  );
+	};
+
+	exports.default = EventCategories;
 
 /***/ }
 /******/ ]);
