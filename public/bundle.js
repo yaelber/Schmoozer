@@ -21447,11 +21447,11 @@
 
 	var _reactRouter = __webpack_require__(173);
 
-	var _Template = __webpack_require__(228);
+	var _Template = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../Common/Template\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _Template2 = _interopRequireDefault(_Template);
 
-	var _EventCategories = __webpack_require__(232);
+	var _EventCategories = __webpack_require__(229);
 
 	var _EventCategories2 = _interopRequireDefault(_EventCategories);
 
@@ -26406,146 +26406,8 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Footer = __webpack_require__(229);
-
-	var _Footer2 = _interopRequireDefault(_Footer);
-
-	var _Header = __webpack_require__(230);
-
-	var _Header2 = _interopRequireDefault(_Header);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Template = function Template(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_Header2.default, null),
-	    props.children,
-	    _react2.default.createElement(_Footer2.default, null)
-	  );
-	};
-
-	exports.default = Template;
-
-/***/ },
+/* 228 */,
 /* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	        value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(173);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// import Post from '../Post/Post';
-
-
-	var Footer = function Footer(props) {
-	        return _react2.default.createElement(
-	                'div',
-	                { className: 'footer' },
-	                _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '' },
-	                        'About'
-	                ),
-	                _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '' },
-	                        'Help'
-	                ),
-	                _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '' },
-	                        'Terms&Conditions'
-	                )
-	        );
-	};
-
-	exports.default = Footer;
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// import Post from '../Post/Post';
-
-
-	var Header = function Header(props) {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "header" },
-	    _react2.default.createElement(
-	      "nav",
-	      { className: "navbar navbar-default" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "container-fluid" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "navbar-header" },
-	          _react2.default.createElement(
-	            "button",
-	            { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1", "aria-expanded": "false" },
-	            _react2.default.createElement(
-	              "span",
-	              { className: "sr-only" },
-	              "Toggle navigation"
-	            ),
-	            _react2.default.createElement("span", { className: "icon-bar" }),
-	            _react2.default.createElement("span", { className: "icon-bar" }),
-	            _react2.default.createElement("span", { className: "icon-bar" })
-	          ),
-	          _react2.default.createElement(
-	            "a",
-	            { className: "navbar-brand", href: "#" },
-	            _react2.default.createElement("img", { alt: "Brand", src: "" })
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	exports.default = Header;
-
-/***/ },
-/* 231 */,
-/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

@@ -13,9 +13,8 @@ export default class App extends Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Template}>
-          <IndexRoute component={EventCategories} />
+          <IndexRoute component={EventCategories}/>
         </Route>
-
       </Router>
     )
   }
