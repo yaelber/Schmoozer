@@ -1,9 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Modal, form, FieldGroup, Checkbox, Button } from 'react-bootstrap';
 
-export default (props) => {
-  return (
-    <div className="Comment">
-      {props.content}
-    </div>
-  );
-};
+
+

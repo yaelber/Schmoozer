@@ -27,7 +27,7 @@ const Navigation = (props) => {
           </NavDropdown>
         </Nav>
         <Nav pullRight>
-          <NavItem eventKey={1} onClick={this.openModal}>Log In</NavItem>
+          <NavItem eventKey={1} onClick={props.openModal}>Log In</NavItem>
           <NavItem eventKey={2} href="#">Register</NavItem>
         </Nav>
       </Navbar.Collapse>

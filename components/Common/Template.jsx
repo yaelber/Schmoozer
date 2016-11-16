@@ -1,41 +1,40 @@
-import React, { Component, PropTypes, Modal } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Footer from './Footer/Footer';
+import render from 'react-dom';
 import Navigation from './Navigation/Navigation';
-import LoginModal from './LoginModal/LoginModal'
+import LoginModal from './LoginModal/LoginModal';
 
 
 class Template extends Component {
+  constructor(props) {
+    super(props);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    
+    this.state = {
+      modalIsOpen: false
+    }
+  }
 
-  getInitialState: function() {
-    return { modalIsOpen: false };
-  },
+    openModal () { this.setState({modalIsOpen: true}); }
 
-  openModal: function() {
-    this.setState({modalIsOpen: true});
-  },
+    closeModal () { this.setState({modalIsOpen: false}); }
 
-  afterOpenModal: function() {
-    // references are now sync'd and can be accessed.
-    this.refs.subtitle.style.color = '#f00';
-  },
 
-  closeModal: function() {
-    this.setState({modalIsOpen: false});
-  },
-
+  
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation openModal={this.openModal} />
         <div className="container">
-          {props.children}
+          {this.props.children}
           <Footer />
         </div>
-        <LoginModal />
+        <LoginModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} openModal={this.openModal} />
       </div>
     );
-  },
-}),
+  }
+}
 
 export default Template;
 
