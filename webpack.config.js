@@ -1,3 +1,6 @@
+const { DefinePlugin } = require('webpack');
+
+
 module.exports = {
   entry: './client.js',
   output: {
@@ -15,5 +18,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.json', '.jsx'] 
-  }
+  },
+  plugins: [
+  new DefinePlugin({
+    GOOGLE_PLACES_AUTOCOMPLETE_PUBLIC_KEY: JSON.stringify(process.env.GOOGLE_PLACES_AUTOCOMPLETE_PUBLIC_KEY)
+  })
+  ]
 };

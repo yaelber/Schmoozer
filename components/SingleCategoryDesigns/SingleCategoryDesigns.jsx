@@ -1,27 +1,43 @@
 import React, { Component } from 'react';
+import {Thumbnail, Grid, Row, Button, Col} from 'react-bootstrap';
 
-export default class Posts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-  }
+const SingleCategoryDesigns = (props) => {
+  return (
+    <Grid>
+    <Row>
+    <Col xs={6} md={4}>
+      <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <Button bsStyle="primary">Button</Button>&nbsp;
+          <Button bsStyle="default">Button</Button>
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={6} md={4}>
+      <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <Button bsStyle="primary">Button</Button>&nbsp;
+          <Button bsStyle="default">Button</Button>
+        </p>
+      </Thumbnail>
+    </Col>
+    <Col xs={6} md={4}>
+      <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+        <h3>Thumbnail label</h3>
+        <p>Description</p>
+        <p>
+          <Button bsStyle="primary">Button</Button>&nbsp;
+          <Button bsStyle="default">Button</Button>
+        </p>
+      </Thumbnail>
+    </Col>
+    </Row>
+  </Grid>
+);
 }
 
-    componentDidMount() {
-    // ajax, dom-based library usage here
-    $.get(`/api/posts/`)
-    .done(posts) => {
-      this.setState({
-        posts: posts
-      );
-    });
-  }
-
-
-  render() {
-    return (
-      <h1> My Blog Posts </h1>
-    )
-  }
-}
+export default SingleCategoryDesigns

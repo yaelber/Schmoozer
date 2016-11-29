@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import {} from 'react-router';
 import render from 'react-dom';
-import { Button, Navbar, NavItem, NavDropdown, MenuItem, Link, Nav } from 'react-bootstrap';
+import { Button, Navbar, NavItem, NavDropdown, MenuItem,  Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 import LoginModal from '../LoginModal/LoginModal'
 
@@ -16,8 +19,12 @@ const Navigation = (props) => {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="#">Link</NavItem>
-          <NavItem eventKey={2} href="#">Link</NavItem>
+          <LinkContainer to={{pathname: '/foo'}}>
+            <NavItem eventKey={1}>Event Form</NavItem>
+          </LinkContainer>
+          <LinkContainer to ={{pathname: '/bar'}}>
+            <NavItem eventKey={2}>Single Category Designs</NavItem>
+          </LinkContainer>
           <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
             <MenuItem eventKey={3.1}>Action</MenuItem>
             <MenuItem eventKey={3.2}>Another action</MenuItem>

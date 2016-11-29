@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require('babel-register');
 
 // routers
 // var routes = require('./routes/index');
@@ -29,17 +30,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/api', routes);
 // app.use('/api/posts', posts);
 // app.use('/api/comments', comments);
-
+app.get("*",function(req, res) {
+  console.log('WWW,JS>>>>>>>>>>>>>>>')
+res.sendFile(__dirname + '/public/index.html')
+});
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
-app.route(/.*/).get(function(req, res) {
-response.sendFile(__dirname + '/public/index.html')
-});
+
 
 // error handlers
 

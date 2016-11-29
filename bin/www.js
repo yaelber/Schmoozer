@@ -1,8 +1,13 @@
 var debug = require('debug')('blogger');
-var app = require('../server');
+var app = require('../server.babel');
 var models = require("../models");
 
 app.set('port', process.env.PORT || 3000);
+
+app.route("*").get(function(req, res) {
+  console.log('WWW,JS>>>>>>>>>>>>>>>')
+response.sendFile(__dirname + '/public/index.html')
+});
 
 //LISTEN
 console.log('start server...')

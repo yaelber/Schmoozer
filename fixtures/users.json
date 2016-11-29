@@ -1,21 +1,16 @@
 [{
   "id": 1,
-  "firstName": "Amy",
-  "lastName": "Smith"
+  "email":"yaelbercow@gmail.com",
+  "password":"123456",
+  "firstName": "Yael",
+  "lastName": "Bercow",
+  "mobile":"9174450445",
+
 }, {
   "id": 2,
-  "firstName": "Bob",
-  "lastName": "Smith"
-}, {
-  "id": 3,
-  "firstName": "Carlos",
-  "lastName": "Smith"
-}, {
-  "id": 4,
+  "email":"dbercow@gmail.com",
+  "password":"123456",
   "firstName": "David",
-  "lastName": "Smith"
-}, {
-  "id": 5,
-  "firstName": "Edward",
-  "lastName": "Smith"
+  "lastName": "Bercow",
+  "mobile":"3475068241",
 }]
