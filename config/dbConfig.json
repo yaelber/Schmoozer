@@ -3,6 +3,7 @@
     "dialect": "postgres",
     "username": "yaelbercow",
     "password": "",
-    "database": "blogger_development"
+    "database": "schmoozer_development"
   }
 }
+

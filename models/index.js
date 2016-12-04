@@ -4,11 +4,14 @@ var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 
 // Load DB config from config file
-var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+var dbConfig    = require(path.join(__dirname, '..', 'config', 'dbConfig.json'))[env];
 
 // Init sequelize with params from config file
 console.log('Create sequelize...');
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+var sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+  dialect: 'postgres',
+  host:'localhost'
+});
 
 // Empty db object to hold our models
 var db        = {};
@@ -19,9 +22,9 @@ fs
     // load all files except index.js (this file)
     return (file.indexOf(".") !== 0) && (file !== "index.js");
   })
-  .forEach(function(file) {
+  .forEach((file) => {
     // For every model file, add the model to our db object
-    var model = sequelize.import(path.join(__dirname, file));
+    let model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 

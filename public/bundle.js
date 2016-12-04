@@ -21476,6 +21476,10 @@
 
 	var _SingleCategoryDesigns2 = _interopRequireDefault(_SingleCategoryDesigns);
 
+	var _Preview = __webpack_require__(511);
+
+	var _Preview2 = _interopRequireDefault(_Preview);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21510,8 +21514,9 @@
 	            _reactRouter.Route,
 	            { path: '/', component: _Template2.default },
 	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _EventCategories2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/foo', component: _EventForm2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/bar', component: _SingleCategoryDesigns2.default })
+	            _react2.default.createElement(_reactRouter.Route, { path: '/form', component: _EventForm2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/designs', component: _SingleCategoryDesigns2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/preview', component: _Preview2.default })
 	          )
 	        )
 	      );
@@ -47159,9 +47164,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import Post from '../Post/Post';
-
-
 	var EventCategories = function EventCategories(props) {
 	  return _react2.default.createElement(
 	    "div",
@@ -47457,6 +47459,71 @@
 	};
 
 	exports.default = SingleCategoryDesigns;
+
+/***/ },
+/* 511 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(253);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//TODO:State for checkbox
+	var Preview = function Preview(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'preview' },
+	      'Preview Design'
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'inviteGuests' },
+	      _react2.default.createElement(
+	        _reactBootstrap.Form,
+	        { horizontal: true },
+	        _react2.default.createElement(
+	          _reactBootstrap.FormGroup,
+	          { controlId: 'formHorizontalText' },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'user' })
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 10 },
+	            _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'Enter Guest\'s Name' })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Checkbox,
+	          null,
+	          'Send me a copy of my invitaion.'
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          { type: 'submit' },
+	          'Add Guest'
+	        )
+	      )
+	    )
+	  );
+	};
+
+	exports.default = Preview;
 
 /***/ }
 /******/ ]);

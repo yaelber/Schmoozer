@@ -5,6 +5,7 @@ import Template from '../Common/Template';
 import EventCategories from '../EventCategories/EventCategories.jsx';
 import EventForm from '../EventForm/EventForm.jsx';
 import SingleCategoryDesigns from '../SingleCategoryDesigns/SingleCategoryDesigns.jsx';
+import Preview from '../Preview/Preview.jsx';
 // import SingleCategoryDesigns from '../SingleCategoryDesigns/SingleCategoryDesigns';
 // import SingleDesign from '../SingleDesign/SingleDesign';
 
@@ -18,8 +19,10 @@ export default class App extends Component {
         <Router history={browserHistory}>
           <Route path="/" component={Template}>
             <IndexRoute component={EventCategories}/>
-              <Route path="/foo" component= {EventForm}/>
-              <Route path="/bar" component= {SingleCategoryDesigns} />
+              <Route path="/form" component= {EventForm}/>
+              <Route path="/designs" component= {SingleCategoryDesigns} />
+              <Route path ="/preview" component = {
+                Preview} />
           </Route>
         </Router>
       </Provider>

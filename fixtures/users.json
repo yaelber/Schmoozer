@@ -4,7 +4,7 @@
   "password":"123456",
   "firstName": "Yael",
   "lastName": "Bercow",
-  "mobile":"9174450445",
+  "mobile":"9174450445"
 
 }, {
   "id": 2,
@@ -12,5 +12,5 @@
   "password":"123456",
   "firstName": "David",
   "lastName": "Bercow",
-  "mobile":"3475068241",
+  "mobile":"3475068241"
 }]
