@@ -6,12 +6,15 @@ var env       = process.env.NODE_ENV || "development";
 // Load DB config from config file
 var dbConfig    = require(path.join(__dirname, '..', 'config', 'dbConfig.json'))[env];
 
+
 // Init sequelize with params from config file
 console.log('Create sequelize...');
+
 var sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
   dialect: 'postgres',
   host:'localhost'
 });
+
 
 // Empty db object to hold our models
 var db        = {};
