@@ -25,12 +25,12 @@ class Template extends Component {
   render() {
     return (
       <div>
-        <Navigation openModal={this.openModal} />
+        <Navigation openModal={this.props.route.openModal} />
         <div className="container">
           {this.props.children}
           <Footer />
         </div>
-        <LoginModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} openModal={this.openModal} />
+        <LoginModal modalIsOpen={this.props.route.modalIsOpen} closeModal={this.props.route.closeModal} openModal={this.props.route.openModal} />
       </div>
     );
   }

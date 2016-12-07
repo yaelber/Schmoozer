@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
 import App from './components/App/App';
 import initAutocomplete from './public/javascripts/autocomplete';
 window.initAutocomplete = initAutocomplete;
