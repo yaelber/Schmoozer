@@ -6,6 +6,7 @@ import EventCategories from '../EventCategories/EventCategories.jsx';
 import EventForm from '../EventForm/EventForm.jsx';
 import SingleCategoryDesigns from '../SingleCategoryDesigns/SingleCategoryDesigns.jsx';
 import Preview from '../Preview/Preview.jsx';
+// import store from '../src/store';
 // import SingleCategoryDesigns from '../SingleCategoryDesigns/SingleCategoryDesigns';
 // import SingleDesign from '../SingleDesign/SingleDesign';
 

@@ -1,8 +1,0 @@
-{
-  "development": {
-    "dialect": "postgres",
-    "username": "yaelbercow",
-    "password": "",
-    "database": "schmoozer_development"
-  }
-}
