@@ -1,4 +1,4 @@
-export default { 
+module.exports ={ 
   "development": {
     "dialect": "postgres",
     "username": "yaelbercow",
@@ -12,3 +12,4 @@ export default {
     "database": "schmoozer_production"
   }
 };
+
