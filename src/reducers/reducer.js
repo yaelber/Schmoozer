@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
+import contacts from './contacts'
 
-import auth from './auth';
-
-const TBD = combineReducers({
-  auth,
+const schmoozer = combineReducers({
+  contacts,
 })
 
-export default TBD
+export default schmoozer

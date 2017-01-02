@@ -1,13 +1,13 @@
-var express = require('express');
-router = express.Router();
+// var express = require('express');
+// router = express.Router();
 
 
-module.exports = function(passport) {
-// POST /user/signup
-router.post('/signup', function(req, res) {
-res.send('got the signup request')
-});
+// module.exports = function(passport) {
+// // POST /user/signup
+// router.post('/signup', function(req, res) {
+// res.send('got the signup request')
+// });
 
 
-return router;
-};
+// return router;
+// };

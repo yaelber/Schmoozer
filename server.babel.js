@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 require('babel-register');
 
 // routers
+// var twillio = require('./routes/twillio')
 // var routes = require('./routes/index');
 // var posts = require('./routes/posts');
 // var comments = require('./routes/comments');
@@ -27,6 +28,8 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // mount routers
+
+// app.use('/api/sms', twillio)
 // app.use('/api', routes);
 // app.use('/api/posts', posts);
 // app.use('/api/comments', comments);

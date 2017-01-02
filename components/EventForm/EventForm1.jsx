@@ -9,6 +9,7 @@ class EventForm extends Component {
         this.handleEventNameChange = this.handleEventNameChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.state = {value:''}
     }
 
@@ -22,12 +23,18 @@ class EventForm extends Component {
     handleLocationChange (event) {
         this.setState({location: event.target.value});
     }
-
+    handleFormSubmit(event) {
+        event.preventDefault()
+        console.log(this.state.eventName);
+        console.log(this.state.time);
+        console.log(this.state.location);
+        
+    }
 
     render() {
         return (
         <div className="eventForm">
-            <Form horizontal>
+            <Form horizontal onClick={this.handleFormSubmit}>
                 <FormGroup controlId="formHorizontalText">
                 <Col componentClass={ControlLabel} sm={2}>
                 <Glyphicon glyph="glass" />
@@ -57,17 +64,12 @@ class EventForm extends Component {
 
                 <FormGroup>
                 <Col smOffset={2} sm={10}>
-                <Button type="submit" onClick={this.handleFormSubmit}>Preview and Invite Guests</Button>
+                <Button type="submit">Preview and Invite Guests</Button>
                 </Col>
                 </FormGroup>
             </Form>
         </div>
         )
-    }
-        handleFormSubmit() {
-        console.log(this.state.eventName);
-        console.log(this.state.time);
-        console.log(this.state.location);
     }
 
 }
