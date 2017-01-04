@@ -1,4 +1,4 @@
-const initialState = [{name:'Yael Bercow',number:'3475068241'}];
+const initialState = [{name:'Yael Bercow',number:'9174450445'}];
 
 const contacts = (state = initialState, action) => {
   switch (action.type) {

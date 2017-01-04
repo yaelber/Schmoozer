@@ -8,7 +8,7 @@
 // > Administrator notified
 var client = require('twilio')(process.env.SCHMOOZER_TWILIO_ACCOUNT_SID, process.env.SCHMOOZER_TWILIO_AUTH_TOKEN);
 
-module.exports.sendSms = function(to,from,message) {
+module.exports.sendSms = function(to,from,message,mediaUrl) {
   client.messages.create({
     to: to,
     from: from,
