@@ -14,22 +14,16 @@ const SingleCategoryDesigns = (props) => {
       </Thumbnail>
     </Col>
     <Col xs={6} md={4}>
-      <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
-        <h3>Thumbnail label</h3>
-        <p>Description</p>
+      <Thumbnail src="http://i.imgur.com/07oMr8Um.jpg" alt="242x200">
         <p>
-          <Button bsStyle="primary">Button</Button>&nbsp;
-          <Button bsStyle="default">Button</Button>
+          <Button bsStyle="primary" href="/form">Customize</Button>&nbsp;
         </p>
       </Thumbnail>
     </Col>
     <Col xs={6} md={4}>
-      <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
-        <h3>Thumbnail label</h3>
-        <p>Description</p>
+      <Thumbnail src="http://i.imgur.com/YQgRTbJm.jpg" alt="242x200">
         <p>
-          <Button bsStyle="primary">Button</Button>&nbsp;
-          <Button bsStyle="default">Button</Button>
+          <Button bsStyle="primary" href="/form">Customize</Button>&nbsp;
         </p>
       </Thumbnail>
     </Col>

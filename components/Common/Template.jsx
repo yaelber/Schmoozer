@@ -3,7 +3,8 @@ import Footer from './Footer/Footer';
 import render from 'react-dom';
 import Navigation from './Navigation/Navigation';
 import LoginModal from './LoginModal/LoginModal';
-
+import Preview from '../Preview/Preview';
+import InviteSentModal from '../InviteSentModal/InviteSentModal';
 
 class Template extends Component {
   constructor(props) {
@@ -25,12 +26,12 @@ class Template extends Component {
   render() {
     return (
       <div>
-        <Navigation openModal={this.openModal} />
+        <Navigation />
         <div className="container">
-          {this.props.children}
+          {React.cloneElement(this.props.children, {openModal:this.openModal})}
           <Footer />
         </div>
-        <LoginModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} openModal={this.openModal} />
+        <InviteSentModal modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal} openModal={this.openModal} />
       </div>
     );
   }

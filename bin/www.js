@@ -17,13 +17,13 @@ app.set('port', process.env.PORT || 3000);
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit:'5mb'}));
+app.use(bodyParser.urlencoded({extended: false,limit:'5mb'}));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/', twilio);
+// app.use('/', twilio);
 app.use('/api/sms', twilio);
 
 // models.sequelize.sync().then(function() {
@@ -34,11 +34,11 @@ app.use('/api/sms', twilio);
 // });
 
 
+app.route("*").get(function(request, response) {
+  console.log('WWW,JS>>>>>>>>>>>>>>>')
+  response.sendFile(path.resolve(__dirname, '../public/index.html'));
+});
 
-// app.route("*").get(function(request, response) {
-//   console.log('WWW,JS>>>>>>>>>>>>>>>')
-// response.sendFile(__dirname + '/public/index.html')
-// });
 
 //LISTEN
 console.log('start server...')

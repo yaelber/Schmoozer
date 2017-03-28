@@ -1,46 +1,61 @@
 import React, { Component, PropTypes } from 'react';
 import {  Form, FormControl, Button, FormGroup, Col, ControlLabel, Checkbox, Glyphicon } from 'react-bootstrap';
 var autocomplete = require('../../public/javascripts/autocomplete');
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router'
+
+const mapStateToProps = state => ({state});
+const mapDispatchToProps = dispatch => ({
+    handleFormSubmit: (eventInfo) => {
+        console.log(eventInfo);
+        dispatch({type:'UPDATE_EVENT_INFO', eventInfo})
+    browserHistory.push('/preview')
+    browserHistory.pop()
+    }
+
+});
 
 
 class EventForm extends Component {
     constructor(props) {
         super(props);
-        this.handleEventNameChange = this.handleEventNameChange.bind(this);
-        this.handleTimeChange = this.handleTimeChange.bind(this);
-        this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.state = {value:''}
     }
 
-
-    handleEventNameChange (event) {
-        this.setState({eventName: event.target.value}); }
-
-    handleTimeChange (event) {
-        this.setState({time: event.target.value});}
-
-    handleLocationChange (event) {
-        this.setState({location: event.target.value});
-    }
-    handleFormSubmit(event) {
+    handleFormSubmit(event) { 
         event.preventDefault()
-        console.log(this.state.eventName);
-        console.log(this.state.time);
-        console.log(this.state.location);
-        
+        const eventInfo = {
+            hostName:event.target.hostName.value,
+            eventName:event.target.eventName.value,
+            time:event.target.time.value,
+            location:event.target.location.value
+        }
+        console.log(event.target.hostName.value);
+        console.log(event.target.eventName.value);
+        console.log(event.target.time.value);
+        console.log(event.target.location.value);
+        this.props.handleFormSubmit(eventInfo)       
     }
 
     render() {
         return (
         <div className="eventForm">
-            <Form horizontal onClick={this.handleFormSubmit}>
+            <Form horizontal onSubmit={this.handleFormSubmit}>
+                <FormGroup controlId="formHorizontalText">
+                <Col componentClass={ControlLabel} sm={2}>
+                <Glyphicon glyph="user" />
+                </Col>
+                <Col sm={10}>
+                <FormControl type="text" name="hostName" placeholder="Enter the Host's Name" />
+                </Col>
+                </FormGroup>
                 <FormGroup controlId="formHorizontalText">
                 <Col componentClass={ControlLabel} sm={2}>
                 <Glyphicon glyph="glass" />
                 </Col>
                 <Col sm={10}>
-                <FormControl type="text" name="eventName"placeholder="Enter Your Event's Name" onChange={this.handleEventNameChange} />
+                <FormControl type="text" name="eventName"placeholder="Enter Your Event's Name" />
                 </Col>
                 </FormGroup>
 
@@ -49,7 +64,7 @@ class EventForm extends Component {
                 <Glyphicon glyph="time" />
                 </Col>
                 <Col sm={10}>
-                <FormControl  type="datetime-local" placeholder="Event's Date and Start Time" name="time"onChange={this.handleTimeChange} />
+                <FormControl  type="datetime-local" placeholder="Event's Date and Start Time" name="time" />
                 </Col>
                 </FormGroup>
 
@@ -58,7 +73,7 @@ class EventForm extends Component {
                 <Glyphicon glyph="map-marker" />
                 </Col>
                 <Col sm={10}>
-                <FormControl className="autocomplete" name="location" type="text" placeholder="Event's Location" onChange={this.handleLocationChange}/>
+                <FormControl className="autocomplete" name="location" type="text" placeholder="Event's Location" />
                 </Col>
                 </FormGroup>
 
@@ -74,4 +89,4 @@ class EventForm extends Component {
 
 }
 
-export default EventForm
+export default connect(mapStateToProps, mapDispatchToProps)(EventForm)

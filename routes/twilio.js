@@ -4,23 +4,39 @@
 var models  = require('../models');
 var express = require('express');
 var router = express.Router();
-var sendSms = require('../twilio/twilioClient');
-var inviteURL = require('../public/javascripts/inviteURL')
-var contacts = require('../src/reducers/contacts')
+var twilioClient = require('../twilio/twilioClient');
+var inviteURL = require('../src/inviteURL')
 
-router.get('/api/sms', (request, response, next) => {
+
+
+router.get('/', (request, response, next) => {
   console.log('hello schmoozer - backend testing')
   response.send('hello-schmoozer')
 });
 
-router.post('/api/sms' , (request, response, next) => {
-  var contacts = contacts.state.number //This should be the redux state - not sure about 1. which file to require 2. how to "name" it?
-  var phoneNumber = "";
-  var x;
-  for (x in contacts) {
-    phoneNumber += contacts[x];
-    sendSms(phoneNumber,'9179246749',"Get Ready to Celebrate",imgShortUrl)
-  }
+router.post('/' , (request, response, next) => {
+  // console.log(Object.keys(request.body), 'HI! Request dot Body!')
+  var contacts = JSON.parse(request.body.contact);
+  // var inviteURL= (mediaUrl) => {
+  //   imgur.upload(mediaUrl, function (err,res) {
+  //     var imgShortUrl = res.data.link
+  //     console.log(imgShortUrl);
+  //   });
+  // }; 
+  var base64Data = request.body.mediaUrl.replace(/^data:image\/png;base64,/, "");
+
+  require("fs").writeFile("out.png", base64Data, 'base64', function(err) {
+    
+
+    console.log('imgur short url', inviteURL("out.png"))
+    console.log(err);
+  });
+
+  contacts.map(function(item){
+    twilioClient.sendSms(item.number, request.body.mediaUrl) 
+    console.log(item);
+    console.log('this is my for loop');
+  }) 
 }) 
 
 

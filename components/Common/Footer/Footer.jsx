@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 const Footer=(props) => {
   return (
 <div className="footer">
-        <Link to="">About</Link>
-        <Link to="">Help</Link>
-        <Link to="">Terms&Conditions</Link>
+        <Link to=""> About</Link>
+        <Link to=""> Help</Link>
+        <Link to=""> Terms&Conditions</Link>
 </div>
 )
 };
